@@ -1,0 +1,1 @@
+# magalu-cd-location
