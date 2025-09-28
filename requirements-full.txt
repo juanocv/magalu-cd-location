@@ -1,0 +1,17 @@
+# Completo (para dados reais e p-mediana)
+pandas
+numpy
+matplotlib
+nbformat
+networkx
+osmnx
+geopandas
+shapely
+pyproj
+rtree
+fiona
+ortools
+scikit-learn
+xgboost
+tqdm
+requests

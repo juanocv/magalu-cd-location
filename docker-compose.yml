@@ -1,0 +1,22 @@
+services:
+  osrm:
+    image: osrm/osrm-backend:latest
+    container_name: osrm_ne
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data/raw/osm:/data
+    command: >
+      sh -lc '
+        if [ ! -f /data/nordeste-latest.osrm ]; then
+          echo "[OSRM] .osrm não encontrado. Processando /data/nordeste-latest.osm.pbf ...";
+          osrm-extract -p /opt/car.lua /data/nordeste-latest.osm.pbf &&
+          osrm-partition /data/nordeste-latest.osrm &&
+          osrm-customize /data/nordeste-latest.osrm;
+          echo "[OSRM] Pré-processamento concluído.";
+        else
+          echo "[OSRM] .osrm já existe — pulando pré-processamento.";
+        fi;
+        echo "[OSRM] Iniciando osrm-routed...";
+        exec osrm-routed --algorithm mld /data/nordeste-latest.osrm
+      '
