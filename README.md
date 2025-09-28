@@ -161,9 +161,6 @@ DNIT / Infraestrutura
 Síntese
 - ```data/processed/case_board_recife_salvador.csv```
 
-## Referências
-
-
 ## Troubleshooting
 1. OSRM não sobe / porta 5000 ocupada: troque a porta -p 5001:5000 e ajuste --osrm http://localhost:5001.
 2. pyogrio/fiona “SHX/DBF missing”: para SHP, garanta .shp/.dbf/.shx/.prj juntos. Quando não houver .dbf, use as planilhas CSV e os GPKGs de diferenças (como neste projeto).
